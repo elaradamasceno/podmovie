@@ -6,6 +6,7 @@ type HeaderCardProps = {
 
 export const Container = styled.div`
   ${({theme}) => css`
+    position: relative;
     width: ${theme.pxToRem(255)};
     height: ${theme.pxToRem(300)};
 
@@ -32,5 +33,29 @@ export const HeaderCard = styled.div<HeaderCardProps>`
 
     height: ${theme.pxToRem(300)};
     width: 100%;
+  `}
+`;
+
+export const TitleCard = styled.div`
+  ${({theme}) => css`
+    position: absolute;
+    bottom: 0px;
+
+    width: 100%;
+    height: ${theme.pxToRem(40)};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: ${theme.colors.primaryDark};
+    opacity: 0.6;
+    border-radius: 0 0 ${theme.pxToRem(16)} ${theme.pxToRem(16)};
+
+    span {
+      font-size: ${theme.pxToRem(18)};
+      color: ${theme.colors.grayLight};
+    }
+    
   `}
 `

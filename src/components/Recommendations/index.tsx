@@ -1,42 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 
-import { trendingMovies } from '../../services/movie-api';
+import { useTrending } from '../../hooks/useTrending';
 import { CardMovies } from '../CardsMovies';
 
 import * as S from './styles';
 
-type ResultType = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: string[];
-  id: number;
-  media_type: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
 export const Recommendations = () => {
-  const [resultsTrending, setResultsTrending] = useState<ResultType[]>([]);
+  const { resultsTrending } = useTrending();
   const [showMovies, setShowMovies] = useState<boolean>(false);
-
-  useEffect(() => {
-    const fetchTrendingMovies = async () => {
-      const response = await trendingMovies();
-      setResultsTrending(response.status === 200 ? response.data.results : []);
-    }
-
-    fetchTrendingMovies();
-  }, []);
 
   const amountMovies = useMemo(() => {
     return showMovies ? 16 : 4;

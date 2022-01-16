@@ -13,8 +13,14 @@ export const CardMovies = ({title, overview, imageUrl, releaseDate, voteAverage}
 
   return (
     <>    
+      {console.log(title)}
       <S.Container>
         <S.HeaderCard url={imageUrl}/>
+
+        {/* <S.TitleCard>
+          <span>{title}</span>
+        </S.TitleCard> */}
+
       </S.Container>
     </>
   )
