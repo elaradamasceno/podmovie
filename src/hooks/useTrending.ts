@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { trendingMovies } from "../services/movie-api";
 
-type ResultType = {
+export type ResultType = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: string[];
@@ -24,8 +24,19 @@ export const useTrending = () => {
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
-      const response = await trendingMovies();
-      setResultsTrending(response.status === 200 ? response.data.results : []);
+      const isTrendingMovies = localStorage.getItem('trendingMovies') !== null ? true : false; 
+      
+      if(isTrendingMovies){
+        const getStorage = localStorage.getItem('trendingMovies')
+        const trendingMovies = JSON.parse(getStorage as string);
+
+        setResultsTrending(trendingMovies);
+      }
+      else {
+        const response = await trendingMovies();
+        setResultsTrending(response.status === 200 ? response.data.results : []);
+        window.localStorage.setItem('trendingMovies', JSON.stringify(response.data.results));
+      }
     }
 
     fetchTrendingMovies();

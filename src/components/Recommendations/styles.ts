@@ -23,7 +23,6 @@ export const Info = styled.div`
     }
 
     h2, span {
-      color: ${theme.colors.gray};
       font-family: 'Poppins', sans-serif;
     }
   `}
@@ -85,4 +84,34 @@ export const MoreMovies = styled.div`
       gap: ${theme.pxToRem(12)};
     }
   `}
-`
+`;
+
+export const ModalContent = styled.div`
+  ${({theme}) => css`
+    padding: ${theme.pxToRem(16)} 0px;
+  `}
+`;
+
+export const ModalInfo = styled.div`
+  ${({theme}) => css`
+    max-width: ${theme.pxToRem(700)};
+
+    color: ${theme.colors.grayDark};
+
+    p {
+      font-size: ${theme.pxToRem(14)};
+    }
+
+    > p{
+      margin-bottom: ${theme.pxToRem(20)};
+    }
+
+    > div{
+      display: grid;
+      text-align: end;
+      gap: ${theme.pxToRem(6)};
+
+      margin-bottom: ${theme.pxToRem(16)};
+    }
+  `}
+`;
